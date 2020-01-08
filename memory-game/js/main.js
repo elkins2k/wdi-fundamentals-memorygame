@@ -3,7 +3,7 @@ let cards =
 		{
 		rank:" queen",
 		suite: "hearts",
-		cardImage: images/queen-of-hearts.png
+		cardImage: "images/queen-of-hearts.png"
 		},
 		{
 		rank:" queen",
@@ -36,15 +36,29 @@ function checkForMatch ()
 			}
 	}
 
-function flipCard (cardID)
-	{ console.log ("User flipped " + cards[cardID].rank);
+function flipCard ()
+	{ 
+		let cardID = this.getAttribute("data-id");
+		console.log ("User flipped " + cards[cardID].rank);
 		console.log (cards[cardID].cardImage);
 		console.log (cards[cardID].suite);
 		cardsInPlay.push(cards[cardID].rank);
+		this.setAttribute("src",cards[cardID].cardImage)
 		if (cardsInPlay.length===2)
 			{ checkForMatch(); 
 			}
 	}
 
-flipCard(0);
-flipCard(2);
+function createBoard ()
+	{
+		for (let i=0; i<cards.length; i++)
+		{
+			let cardElement = document.createElement("img");
+			cardElement.setAttribute("src", "images/back.png");
+			cardElement.setAttribute("data-id", i);
+			cardElement.addEventListener("click", flipCard);
+			document.getElementById("game-board").appendChild(cardElement);
+		}
+	}
+
+createBoard();
