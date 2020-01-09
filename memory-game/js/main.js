@@ -1,24 +1,24 @@
 let cards =
 	[
 		{
-		rank:" queen",
-		suite: "hearts",
-		cardImage: "images/queen-of-hearts.png"
+			rank:" queen",
+			suite: "hearts",
+			cardImage: "images/queen-of-hearts.png"
 		},
 		{
-		rank:" queen",
-		suite: "diamonds",
-		cardImage: "images/queen-of-diamonds.png"
+			rank:" queen",
+			suite: "diamonds",
+			cardImage: "images/queen-of-diamonds.png"
 		},
 		{
-		rank:" king",
-		suite: "hearts",
-		cardImage: "images/king-of-hearts.png"
+			rank:" king",
+			suite: "hearts",
+			cardImage: "images/king-of-hearts.png"
 		},
 		{
-		rank:" king",
-		suite: "diamonds",
-		cardImage: "images/king-of-diamonds.png"
+			rank:" king",
+			suite: "diamonds",
+			cardImage: "images/king-of-diamonds.png"
 		}
 	];
 
@@ -43,9 +43,10 @@ function flipCard ()
 		console.log (cards[cardID].cardImage);
 		console.log (cards[cardID].suite);
 		cardsInPlay.push(cards[cardID].rank);
-		this.setAttribute("src",cards[cardID].cardImage)
+		this.setAttribute("src",cards[cardID].cardImage);
 		if (cardsInPlay.length===2)
-			{ checkForMatch(); 
+			{
+				checkForMatch(); 
 			}
 	}
 
@@ -57,6 +58,7 @@ function createBoard ()
 			cardElement.setAttribute("src", "images/back.png");
 			cardElement.setAttribute("data-id", i);
 			cardElement.addEventListener("click", flipCard);
+			console.log(document.getElementById("game-board"));
 			document.getElementById("game-board").appendChild(cardElement);
 		}
 	}
